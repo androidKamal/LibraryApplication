@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.androidkamallib.libapplication.view.dashboard.ui.home.fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_uv_index"
+        android:name="com.androidkamallib.libapplication.view.dashboard.ui.uv_index.UVIndexFragment"
+        android:label="@string/menu_uv_index"
+        tools:layout="@layout/fragment_uvindex" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.androidkamallib.libapplication.view.dashboard.ui.forecast.SlideshowFragment"
+        android:label="@string/menu_forecast"
+        tools:layout="@layout/fragment_forecast" />
+
+    <fragment
+        android:id="@+id/nav_select_city"
+        android:name="com.androidkamallib.libapplication.view.dashboard.ui.city.fragemnt.SelectCityFragment"
+        android:label="@string/menu_select_city"
+        tools:layout="@layout/fragment_select_city" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.androidkamallib.libapplication.view.dashboard.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.androidkamallib.libapplication.view.dashboard.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+</navigation>

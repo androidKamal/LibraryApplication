@@ -1,0 +1,77 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="FullScreenAppTheme" parent="BaseAppTheme">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme" parent="FullScreenAppTheme">
+        <item name="windowNoTitle">false</item>
+    </style>
+
+    <style name="textDark" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="normalWhite" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="normalBlack" parent="normalWhite">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="extraLargeWhite" parent="normalWhite">
+        <item name="android:textSize">@dimen/_20sdp</item>
+    </style>
+
+    <style name="extraExtraLargeWhite" parent="normalWhite">
+        <item name="android:textSize">@dimen/_22sdp</item>
+    </style>
+
+    <style name="extraExtraExtraLargeWhite" parent="normalWhite">
+        <item name="android:textSize">@dimen/_24sdp</item>
+    </style>
+
+    <style name="extraExtraExtraExtraLargeWhite" parent="normalWhite">
+        <item name="android:textSize">@dimen/_22sdp</item>
+    </style>
+
+
+    <style name="largeWhiteCenter" parent="normalWhite">
+        <item name="android:textSize">@dimen/_18sdp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="normalWhiteCenter" parent="largeWhiteCenter">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+
+    <style name="mediumWhiteCenter" parent="normalWhiteCenter">
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="smallWhiteCenter" parent="normalWhiteCenter">
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="FullScreenAppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="FullScreenAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="FullScreenAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
