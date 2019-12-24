@@ -12,6 +12,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("../AndroidKamal.jks")
+            storePassword "Kamlesh"
+            keyAlias "Key0"
+            keyPassword "Kamlesh"
+        }
+    }
+
     defaultConfig {
         applicationId "com.androidkamallib.libapplication"
         minSdkVersion 21
@@ -24,7 +34,9 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
 }

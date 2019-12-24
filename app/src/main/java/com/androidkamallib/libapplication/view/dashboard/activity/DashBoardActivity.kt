@@ -73,7 +73,6 @@ class DashBoardActivity : BaseActivity() {
             it.isChecked
         }
 
-
     }
 
     override fun onResume() {
