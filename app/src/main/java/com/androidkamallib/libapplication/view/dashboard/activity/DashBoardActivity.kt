@@ -58,7 +58,7 @@ class DashBoardActivity : BaseActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        // P// Passing each menu ID as a set of Ids because each
+        // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
