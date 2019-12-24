@@ -26,7 +26,7 @@ class DashBoardActivity : BaseActivity() {
 
     companion object {
         fun starter(activity: BaseActivity) {
-            var intent = Intent(activity, DashBoardActivity::class.java)
+            val intent = Intent(activity, DashBoardActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -51,6 +51,7 @@ class DashBoardActivity : BaseActivity() {
         viewmodel = ViewModelProviders.of(this, DashboardViewModelFactory(this))
             .get(DashboardViewModel::class.java)
         binding!!.viewModel = viewmodel
+
         binding!!.lifecycleOwner = this
 
 
