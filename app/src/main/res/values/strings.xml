@@ -30,4 +30,7 @@
     <string name="sunset">Sunset</string>
     <string name="ground_level">Ground Level:</string>
     <string name="sea_level">Sea Level :</string>
+    <string name="close_app_message">Do you want to close App?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

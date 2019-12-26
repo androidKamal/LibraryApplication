@@ -12,6 +12,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.androidkamallib.libapplication.R
 import com.androidkamallib.libapplication.databinding.ActivityDashBoardBinding
 import com.androidkamallib.libapplication.util.factory.viewModelFactory.DashboardViewModelFactory
@@ -102,12 +104,34 @@ class DashBoardActivity : BaseActivity() {
 
         if (getSelectCityFragment()) {
             if (viewmodel!!.checkIfCitySelected()) {
-                super.onBackPressed()
+                showCloseDialog()
+
+            }else{
+                navView.menu.getItem(2).setOnMenuItemClickListener {
+                    it.isChecked
+                }
             }
         } else {
-            super.onBackPressed()
+            if (viewmodel!!.checkIfCitySelected()) {
+                super.onBackPressed()
+            }else{
+                showCloseDialog()
+            }
 
         }
-
     }
+     private fun showCloseDialog(){
+         MaterialDialog(this).show {
+             lifecycleOwner(this@DashBoardActivity)
+             title(text = getString(R.string.app_name))
+             icon(R.drawable.ic_launcher)
+             message(text=getString(R.string.close_app_message))
+
+             positiveButton(text = getString(R.string.yes)){
+                 super.onBackPressed()
+             }
+             negativeButton(text = getString(R.string.no))
+         }
+     }
 }
+
