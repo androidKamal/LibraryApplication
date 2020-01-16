@@ -10,11 +10,12 @@ import com.androidkamallib.libapplication.view.dashboard.viewModel.DashboardView
 import com.androidkamallib.libapplication.view.splash_activity.activity.SplashActivity
 import com.androidkamallib.library.dagger.componant.ApplicationComponent
 import com.androidkamallib.library.dagger.module.data.preference.SharedPreferencesModule
+import com.androidkamallib.library.dagger.module.toast.ToastModule
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [SharedPreferencesModule::class, AppNetworkModule::class, DatabaseModule::class])
+@Component(modules = [SharedPreferencesModule::class, AppNetworkModule::class, DatabaseModule::class, ToastModule::class])
 interface WeatherApplicationComponent : ApplicationComponent {
 
 

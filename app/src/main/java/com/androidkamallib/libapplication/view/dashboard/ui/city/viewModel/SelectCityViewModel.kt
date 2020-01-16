@@ -17,6 +17,7 @@ import com.androidkamallib.library.base.BaseActivity
 import com.androidkamallib.library.base.BaseFragment
 import com.androidkamallib.library.base.BaseViewModel
 import com.androidkamallib.library.dagger.module.data.preference.SharedPrefsHelper
+import com.androidkamallib.library.dagger.module.toast.ToastHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +38,9 @@ class SelectCityViewModel : BaseViewModel {
 
     @javax.inject.Inject
     lateinit var weatherDatabase: WeatherDatabase
+
+    @javax.inject.Inject
+    lateinit var toastHelper: ToastHelper
 
     var todaysWeatherRepository: TodaysWeatherRepository
 
@@ -102,7 +106,7 @@ class SelectCityViewModel : BaseViewModel {
                         if (response.errorBody() == null) {
 
                         } else {
-                            Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show()
+                            toastHelper.showLongToast(  response.message())
                         }
                     }
                     onProgressFinish()

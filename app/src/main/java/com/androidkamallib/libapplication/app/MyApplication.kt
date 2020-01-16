@@ -9,6 +9,7 @@ import com.androidkamallib.libapplication.di.appModule.DatabaseModule
 import com.androidkamallib.libapplication.di.networkModule.AppNetworkModule
 import com.androidkamallib.library.base.BaseApplication
 import com.androidkamallib.library.dagger.module.data.preference.SharedPreferencesModule
+import com.androidkamallib.library.dagger.module.toast.ToastModule
 
 
 class MyApplication : BaseApplication() {
@@ -23,8 +24,10 @@ class MyApplication : BaseApplication() {
                     SharedPreferenceConstant.SHARED_PREFERENCE
                 )
             )
+
             .appNetworkModule(AppNetworkModule(this, WebConstant.BASE_URL))
             .databaseModule(DatabaseModule(this, DBConstant.DBNAme))
+            .toastModule(ToastModule(this))
             .build()
         (applicationComponent as WeatherApplicationComponent?)!!.inject(this)
 

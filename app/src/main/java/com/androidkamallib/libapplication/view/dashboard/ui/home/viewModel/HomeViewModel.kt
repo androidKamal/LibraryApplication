@@ -18,6 +18,7 @@ import com.androidkamallib.library.base.BaseActivity
 import com.androidkamallib.library.base.BaseFragment
 import com.androidkamallib.library.base.BaseViewModel
 import com.androidkamallib.library.dagger.module.data.preference.SharedPrefsHelper
+import com.androidkamallib.library.dagger.module.toast.ToastHelper
 import com.androidkamallib.library.util.CalenderUtil.formatToDisplayDate
 import com.androidkamallib.library.util.CalenderUtil.formatToIndianTime
 import com.androidkamallib.library.util.glide.GlideUtil
@@ -46,6 +47,10 @@ class HomeViewModel : BaseViewModel {
     @javax.inject.Inject
     lateinit var weatherDatabase: WeatherDatabase
 
+    @javax.inject.Inject
+    lateinit var toastHelper: ToastHelper
+
+
     var todaysWeatherRepository: HomeTodaysWeatherRepository
 
     constructor(activity: BaseActivity, fragment: BaseFragment) : super(activity) {
@@ -62,6 +67,7 @@ class HomeViewModel : BaseViewModel {
 
 
     fun getTodayWeather() {
+        toastHelper.showLongToast( "Called Toast")
         todaysWather!!.value = todaysWeatherRepository.geTodayWeather(
             preferenceHelper.get(
                 SharedPreferenceConstant.CITY_NAME,
@@ -146,7 +152,7 @@ class HomeViewModel : BaseViewModel {
                         if (response.errorBody() == null) {
 
                         } else {
-                            Toast.makeText(activity, response.message(), Toast.LENGTH_LONG).show()
+                            toastHelper.showLongToast( response.message())
                         }
                     }
                     onProgressFinish()
@@ -155,6 +161,7 @@ class HomeViewModel : BaseViewModel {
             })
         } catch (e: Exception) {
             onProgressFinish()
+            toastHelper.showLongToast(  e.toString())
             Log.e("Error", e.toString())
         }
     }
