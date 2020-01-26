@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Library</string>
     <string name="loading_progress">Loading...</string>
+    <string name="no_record_available">No record available</string>
 </resources>

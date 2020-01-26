@@ -1,6 +1,11 @@
 package com.androidkamallib.library.dagger.module.toast
 
+import android.R
+import android.graphics.Color
 import android.os.Handler
+import android.view.Gravity
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -39,6 +44,36 @@ constructor(private val toast: Toast) {
     }
 
     fun showLongToast(message: String) {
+        toast.setText(message)
+        toast.show()
+        cancelToast(LONG_DELAY)
+    }
+
+    fun showErrorToast(message: String, atBottom:Boolean=true){
+        val toastView: View = toast.view
+        toastView.setBackgroundColor(Color.RED)
+        val text: TextView = toastView.findViewById(R.id.message)
+        text.setTextColor(Color.WHITE)
+        if(atBottom) {
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 8)
+        }else{
+            toast.setGravity(Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 8)
+        }
+        toast.setText(message)
+        toast.show()
+        cancelToast(LONG_DELAY)
+    }
+
+    fun showSuccessToast(message: String, atBottom:Boolean=true){
+        val toastView: View = toast.view
+        toastView.setBackgroundResource(R.color.holo_green_dark)
+        val text: TextView = toastView.findViewById(R.id.message)
+        if(atBottom) {
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 8)
+        }else{
+            toast.setGravity(Gravity.TOP or Gravity.FILL_HORIZONTAL, 0, 8)
+        }
+        text.setTextColor(Color.WHITE)
         toast.setText(message)
         toast.show()
         cancelToast(LONG_DELAY)

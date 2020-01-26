@@ -17,4 +17,7 @@ interface APIInterface {
 
     @POST
     fun post(@Url url: String, @Body body: Any): Call<Any>
+
+    @POST
+    fun post(@Url url: String, @Body body: Any, @Header("body") requestDTO: Any): Call<Any>
 }
