@@ -53,6 +53,7 @@ class SelectCityViewModel : BaseViewModel {
         )
         todaysWeatherRepository = TodaysWeatherRepository(weatherDatabase.todayWeatherDao()!!)
         onProgressFinish()
+        toastHelper.showSuccessToast("Message")
     }
 
     private val _text = MutableLiveData<String>().apply {
@@ -106,7 +107,7 @@ class SelectCityViewModel : BaseViewModel {
                         if (response.errorBody() == null) {
 
                         } else {
-                            toastHelper.showLongToast(  response.message())
+                            toastHelper.showErrorToast(  response.message())
                         }
                     }
                     onProgressFinish()
@@ -115,7 +116,7 @@ class SelectCityViewModel : BaseViewModel {
             })
         } catch (e: Exception) {
             onProgressFinish()
-            Log.e("Error", e.toString())
+            toastHelper.showErrorToast( e.toString())
         }
 
 
