@@ -3,8 +3,12 @@ package com.androidkamallib.library.dagger.module.network
 import android.content.Context
 import android.util.Log
 import com.androidkamallib.library.BuildConfig
+import com.androidkamallib.library.base.BaseVariable.Companion.AUTHRORIZATION
 import com.androidkamallib.library.base.BaseVariable.Companion.CACHE_CONTROL
+import com.androidkamallib.library.base.BaseVariable.Companion.CURRENT_AUTHRORIZATION
+import com.androidkamallib.library.base.BaseVariable.Companion.CURRENT_USER_NAME
 import com.androidkamallib.library.base.BaseVariable.Companion.MINUTES_TO_REFRESH_CACHE
+import com.androidkamallib.library.base.BaseVariable.Companion.USER_NAME
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -18,7 +22,7 @@ import java.util.concurrent.TimeUnit
 
 
 @Module
-open class NetworkModule(val context: Context, val baseURL: String) {
+open abstract class NetworkModule(val context: Context, val baseURL: String) {
 
     private val CLASSTAG: String = NetworkModule::class.java.simpleName
 
@@ -52,10 +56,14 @@ open class NetworkModule(val context: Context, val baseURL: String) {
                 )
             })
         httpLogging.level = setLoggingLevel()
+
+
+
         return OkHttpClient.Builder().connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(httpLogging)
             .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(provideHeader())
             .addNetworkInterceptor(provideNetworkInterceptor())
             .cache(getCacheProvider())
             .build()
@@ -125,5 +133,16 @@ open class NetworkModule(val context: Context, val baseURL: String) {
              chain.proceed(request)
          }
      }*/
+    @Provides
+    fun provideHeader(): Interceptor{
+        return Interceptor { chain ->
+            val response: Response = chain.proceed(chain.request())
+
+            response.newBuilder()
+                .header(USER_NAME,CURRENT_USER_NAME )
+                .header(AUTHRORIZATION,CURRENT_AUTHRORIZATION )
+                .build()
+        }
+    }
 
 }

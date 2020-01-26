@@ -5,6 +5,10 @@ class BaseVariable {
         var SHARED_PREFERENCE_NAME = "baseSharedPreference"
         var LOCAL_DB_NAME = "baseDB"
         var BASE_URL = "baseDB"
+        val AUTHRORIZATION = "authorization"
+        val USER_NAME = "userName"
+        var CURRENT_USER_NAME = "userName"
+        var CURRENT_AUTHRORIZATION = "userName"
         var LOCAL_DB_VERSION = 1
 
         val CACHE_CONTROL = "Cache-Control"
