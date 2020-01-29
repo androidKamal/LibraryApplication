@@ -1,5 +1,6 @@
 package com.androidkamallib.library.util.CalenderUtil
 
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -99,6 +100,17 @@ fun Calendar.getDayOnlyTimeStamp(locale: Locale = Locale.getDefault()): Long {
     calendar.set(Calendar.MINUTE, 0)
     calendar.set(Calendar.SECOND, 0)
     calendar.set(Calendar.MILLISECOND, 0)
+    return calendar.timeInMillis
+}
+
+
+/**
+ * Pattern: Calendar from hh:mm a string
+ */
+fun Calendar.getTimeFromString(locale: Locale = Locale.getDefault(), timeString: String): Long {
+    val aFormatter: = SimpleDateFormat("hh:mm a")
+    val dt: Date = aFormatter.parse(timeString)
+    calendar.time=dt
     return calendar.timeInMillis
 }
 
