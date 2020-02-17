@@ -1,6 +1,7 @@
 package com.androidkamallib.libapplication.view.splash_activity.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.androidkamallib.libapplication.R
@@ -11,6 +12,7 @@ import com.androidkamallib.libapplication.util.factory.viewModelFactory.SplashVi
 import com.androidkamallib.libapplication.view.splash_activity.viewModel.SplashViewModel
 import com.androidkamallib.library.base.BaseActivity
 import com.androidkamallib.library.dagger.module.data.preference.SharedPrefsHelper
+import com.androidkamallib.library.util.common.UniqueNumber
 
 class SplashActivity : BaseActivity() {
 
@@ -31,6 +33,8 @@ class SplashActivity : BaseActivity() {
             .get(SplashViewModel::class.java)
         binding!!.viewModel = viewmodel
         binding!!.lifecycleOwner = this
+
+        Log.d("TAG",UniqueNumber.getRandomString())
     }
 
 
