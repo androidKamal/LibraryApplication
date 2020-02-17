@@ -108,7 +108,7 @@ fun Calendar.getDayOnlyTimeStamp(locale: Locale = Locale.getDefault()): Long {
  * Pattern: Calendar from hh:mm a string
  */
 fun Calendar.getTimeFromString(locale: Locale = Locale.getDefault(), timeString: String): Long {
-    val aFormatter: = SimpleDateFormat("hh:mm a")
+    val aFormatter = SimpleDateFormat("hh:mm a")
     val dt: Date = aFormatter.parse(timeString)
     calendar.time=dt
     return calendar.timeInMillis
@@ -128,4 +128,5 @@ fun Date.add(field: Int, amount: Int): Date {
 
     return this
 }
+
 
