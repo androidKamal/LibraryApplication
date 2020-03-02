@@ -49,7 +49,7 @@ constructor(private val toast: Toast) {
         cancelToast(LONG_DELAY)
     }
 
-    fun showErrorToast(message: String, atBottom:Boolean=true){
+    fun showErrorToast(message: String, atBottom:Boolean=true, delay:Long = LONG_DELAY){
         val toastView: View = toast.view
         toastView.setBackgroundColor(Color.RED)
         val text: TextView = toastView.findViewById(R.id.message)
@@ -61,10 +61,10 @@ constructor(private val toast: Toast) {
         }
         toast.setText(message)
         toast.show()
-        cancelToast(LONG_DELAY)
+        cancelToast(delay)
     }
 
-    fun showSuccessToast(message: String, atBottom:Boolean=true){
+    fun showSuccessToast(message: String, atBottom:Boolean=true, delay:Long = LONG_DELAY){
         val toastView: View = toast.view
         toastView.setBackgroundResource(R.color.holo_green_dark)
         val text: TextView = toastView.findViewById(R.id.message)
@@ -76,7 +76,7 @@ constructor(private val toast: Toast) {
         text.setTextColor(Color.WHITE)
         toast.setText(message)
         toast.show()
-        cancelToast(LONG_DELAY)
+        cancelToast(delay)
     }
 
     private fun cancelToast(long: Long = SHORT_DELAY) {
