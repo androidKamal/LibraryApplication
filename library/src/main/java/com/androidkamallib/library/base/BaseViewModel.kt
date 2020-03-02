@@ -62,7 +62,7 @@ open class BaseViewModel(var activity: BaseActivity) : ViewModel() {
     }
 
 
-    private fun isPackageInstalled(
+    fun isPackageInstalled(
         packageName: String,
         packageManager: PackageManager = activity.packageManager
     ): Boolean {
