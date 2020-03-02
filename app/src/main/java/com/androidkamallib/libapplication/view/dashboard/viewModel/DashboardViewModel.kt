@@ -14,8 +14,6 @@ class DashboardViewModel : BaseViewModel {
     @javax.inject.Inject
     lateinit var preferenceHelper: SharedPrefsHelper
 
-    var activity: DashBoardActivity
-
     constructor(activity: DashBoardActivity) : super(activity) {
         this.activity = activity
         (((activity.applicationContext as MyApplication).applicationComponent) as WeatherApplicationComponent).inject(
@@ -31,7 +29,7 @@ class DashboardViewModel : BaseViewModel {
                 false
             ))
         ) {
-            activity.navView.menu.performIdentifierAction(R.id.nav_select_city, 0)
+            (activity as DashBoardActivity).navView.menu.performIdentifierAction(R.id.nav_select_city, 0)
             false
         } else {
             true

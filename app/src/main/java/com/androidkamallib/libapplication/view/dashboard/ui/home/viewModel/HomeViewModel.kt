@@ -19,8 +19,9 @@ import com.androidkamallib.library.base.BaseFragment
 import com.androidkamallib.library.base.BaseViewModel
 import com.androidkamallib.library.dagger.module.data.preference.SharedPrefsHelper
 import com.androidkamallib.library.dagger.module.toast.ToastHelper
-import com.androidkamallib.library.util.CalenderUtil.formatToDisplayDate
-import com.androidkamallib.library.util.CalenderUtil.formatToIndianTime
+import com.androidkamallib.library.util.CalenderUtil.CalenderPattern
+import com.androidkamallib.library.util.CalenderUtil.formatTimeStampToPattern
+
 import com.androidkamallib.library.util.glide.GlideUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +30,6 @@ import java.util.*
 import javax.inject.Inject
 
 class HomeViewModel : BaseViewModel {
-    var activity: DashBoardActivity
     var fragment: HomeFragment
 
 
@@ -84,9 +84,11 @@ class HomeViewModel : BaseViewModel {
     private fun setTodaysWeather() {
         var cal = Calendar.getInstance()
         toDaysTime!!.value =
-            cal.formatToIndianTime(((todaysWather!!.value!!.dt).toString() + "000").toLong())
+            cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
+                pattern = CalenderPattern.dd_MM_yyyy)
         toDaysDate!!.value =
-            cal.formatToDisplayDate(((todaysWather!!.value!!.dt).toString() + "000").toLong())
+            cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
+                    pattern = CalenderPattern.hh_mm_a)
 
         activity.getDrawable(
             R.drawable.ic_launcher
@@ -103,14 +105,16 @@ class HomeViewModel : BaseViewModel {
     fun getDate(timeMillisInt: Int): MutableLiveData<String> {
         var cal = Calendar.getInstance()
         var toDaysDate: MutableLiveData<String>? = MutableLiveData()
-        toDaysDate!!.value = cal.formatToDisplayDate(((timeMillisInt).toString() + "000").toLong())
+        toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
+            pattern = CalenderPattern.dd_MM_yyyy)
         return toDaysDate
     }
 
     fun getTime(timeMillisInt: Int): MutableLiveData<String> {
         var cal = Calendar.getInstance()
         var toDaysDate: MutableLiveData<String>? = MutableLiveData()
-        toDaysDate!!.value = cal.formatToIndianTime(((timeMillisInt).toString() + "000").toLong())
+        toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
+            pattern = CalenderPattern.hh_mm_a)
         return toDaysDate
     }
 

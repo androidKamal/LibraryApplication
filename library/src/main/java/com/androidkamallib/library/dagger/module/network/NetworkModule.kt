@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 
 
 @Module
-open abstract class NetworkModule(val context: Context, val baseURL: String) {
+abstract class NetworkModule(val context: Context, val baseURL: String) {
 
     private val CLASSTAG: String = NetworkModule::class.java.simpleName
 
@@ -103,7 +103,7 @@ open abstract class NetworkModule(val context: Context, val baseURL: String) {
      * API calling performance
      * @return
      */
-    private fun provideNetworkInterceptor(): Interceptor? {
+    private fun provideNetworkInterceptor(): Interceptor {
         return Interceptor { chain ->
             val response: Response = chain.proceed(chain.request())
             val cacheControl = CacheControl.Builder()

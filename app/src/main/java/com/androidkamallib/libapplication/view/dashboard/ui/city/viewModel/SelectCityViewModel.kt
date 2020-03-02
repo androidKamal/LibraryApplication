@@ -25,7 +25,7 @@ import javax.inject.Inject
 import kotlin.text.isNotEmpty as isNotEmpty1
 
 class SelectCityViewModel : BaseViewModel {
-    var activity: DashBoardActivity
+
     var fragment: SelectCityFragment
     var cityName: MutableLiveData<String> = MutableLiveData()
     var buttonVisibility: MutableLiveData<Boolean> = MutableLiveData()

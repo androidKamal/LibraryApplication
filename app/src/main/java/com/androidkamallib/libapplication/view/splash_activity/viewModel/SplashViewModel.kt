@@ -6,19 +6,17 @@ import com.androidkamallib.libapplication.view.splash_activity.activity.SplashAc
 import com.androidkamallib.library.base.BaseViewModel
 
 
-class SplashViewModel : BaseViewModel {
-    private var activity: SplashActivity
+class SplashViewModel(activity: SplashActivity) : BaseViewModel(activity) {
 
-    constructor(activity: SplashActivity) : super(activity) {
-        this.activity = activity
+
+    init {
         onProgressStart()
-
         Handler().postDelayed({
             gotoDashBoard()
         }, 2000)
     }
 
-    fun gotoDashBoard() {
+    private fun gotoDashBoard() {
         DashBoardActivity.starter(activity)
     }
 

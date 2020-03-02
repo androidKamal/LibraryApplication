@@ -1,13 +1,26 @@
 package com.androidkamallib.library.util.CalenderUtil
 
+import android.annotation.SuppressLint
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-/**
- * Pattern: yyyy-MM-dd HH:mm:ss
- */
+class CalenderPattern(){
+    companion object{
+        var yyyy_MM_dd_HH_mm_ss ="yyyy-MM-dd HH:mm:ss"
+        var yyyyMMddHHmmss = "yyyyMMddHHmmss"
+        var yyyy_MM_dd = "yyyy-MM-dd"
+        var HH__mm__ss = "HH:mm:ss"
+        var dd_MM_yyyy_HH__mm__ss = "dd/MM/yyyy HH:mm:ss"
+        var dd_MM_yyyy = "dd/MM/yyyy"
+        var hh_mm_a = "hh:mm a"
+        var EEE_MMM_dd_yyyy = "EEE, MMM dd, yyyy"
+        var dd_MM_yyyy_hh_mm_a = "dd:MM:yyyy hh:mm a"
+        var DD_MMM_YYYY_hh_mm_a = "DD-MMM-YYYY hh:mm a"
+    }
+}
+
 private val calendar: Calendar by lazy {
     Calendar.getInstance()
 }
@@ -17,85 +30,25 @@ fun Date.isSunday(): Boolean {
     return calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
 }
 
-fun Calendar.formatToServerDateTimeDefaults(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale)
+fun Calendar.formatToPatternDateTime(locale: Locale  = Locale.ENGLISH, pattern : String): String {
+    val sdf = SimpleDateFormat(pattern, locale)
     return sdf.format(calendar)
 }
 
-fun Calendar.formatToTruncatedDateTime(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("yyyyMMddHHmmss", locale)
-    return sdf.format(this)
-}
-
-/**
- * Pattern: yyyy-MM-dd
- */
-fun Calendar.formatToServerDateDefaults(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("yyyy-MM-dd", locale)
-    return sdf.format(this)
-}
-
-/**
- * Pattern: HH:mm:ss
- */
-fun Calendar.formatToServerTimeDefaults(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("HH:mm:ss", locale)
-    return sdf.format(calendar.time)
-}
-
-/**
- * Pattern: HH:mm A
- */
-fun Calendar.formatToIndianTime(
+fun Calendar.formatTimeStampToPattern(
     timeMillis: Long = calendar.timeInMillis,
-    locale: Locale = Locale.getDefault()
+    locale: Locale  = Locale.ENGLISH,
+    pattern: String
 ): String {
-    val sdf = SimpleDateFormat("hh:mm a", locale)
+    val sdf = SimpleDateFormat(pattern, locale)
     calendar.timeInMillis = timeMillis
     return sdf.format(calendar.time)
 }
 
 /**
- * Pattern: EEEEE MMMMM yyyy
+ * get Today's time stamp
  */
-fun Calendar.formatToDisplayDate(
-    timeMillis: Long = calendar.timeInMillis,
-    locale: Locale = Locale.getDefault()
-): String {
-    val sdf = SimpleDateFormat("EEE, MMM dd, yyyy", locale)
-    calendar.timeInMillis = timeMillis
-    return sdf.format(calendar.time)
-}
-
-/**
- * Pattern: dd/MM/yyyy HH:mm:ss
- */
-fun Calendar.formatToViewDateTimeDefaults(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", locale)
-    return sdf.format(this)
-}
-
-/**
- * Pattern: dd/MM/yyyy
- */
-fun Calendar.formatToViewDateDefaults(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("dd/MM/yyyy", locale)
-    return sdf.format(this)
-}
-
-/**
- * Pattern: HH:mm:ss
- */
-fun Calendar.formatToViewTimeDefaults(locale: Locale = Locale.getDefault()): String {
-    val sdf = SimpleDateFormat("HH:mm:ss", locale)
-    return sdf.format(this)
-}
-
-
-/**
- * Pattern: dd/MM/yyyy HH:mm:ss
- */
-fun Calendar.getDayOnlyTimeStamp(locale: Locale = Locale.getDefault()): Long {
+fun Calendar.getDayOnlyTimeStamp(): Long {
     calendar.set(Calendar.HOUR, 0)
     calendar.set(Calendar.MINUTE, 0)
     calendar.set(Calendar.SECOND, 0)
@@ -107,26 +60,25 @@ fun Calendar.getDayOnlyTimeStamp(locale: Locale = Locale.getDefault()): Long {
 /**
  * Pattern: Calendar from hh:mm a string
  */
-fun Calendar.getTimeFromString(locale: Locale = Locale.getDefault(), timeString: String): Long {
-    val aFormatter = SimpleDateFormat("hh:mm a")
-    val dt: Date = aFormatter.parse(timeString)
+fun Calendar.getTimeFromString(locale: Locale = Locale.ENGLISH, dateTimeString: String, pattern: String): Long {
+    val aFormatter = SimpleDateFormat(pattern,locale)
+    val dt = aFormatter.parse(dateTimeString)
     calendar.time=dt
     return calendar.timeInMillis
 }
 
+
 /**
- * Add field date to current date
+ * Add Day/Month/Year date to current date
  */
 fun Date.add(field: Int, amount: Int): Date {
-    val cal = Calendar.getInstance()
+    val cal = calendar
     cal.time = this
     cal.add(field, amount)
-
     this.time = cal.time.time
-
     cal.clear()
-
     return this
 }
+
 
 
