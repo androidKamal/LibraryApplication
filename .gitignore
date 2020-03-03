@@ -10,3 +10,7 @@ local.properties
 Lib Application.iml
 app/app.iml
 library/library.iml
+/build/
+library/build/
+app/build/
+build/

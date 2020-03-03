@@ -1,1 +1,15 @@
-/build
+app/local.properties
+app/gradlew
+app/.idea/
+.gradle/
+app/gradlew.bat
+app/gradle/wrapper/gradle-wrapper.jar
+app/gradle/wrapper/gradle-wrapper.properties
+local.properties
+.idea/
+Lib Application.iml
+app/app.iml
+library/library.iml
+/build/
+library/build/
+app/build/
