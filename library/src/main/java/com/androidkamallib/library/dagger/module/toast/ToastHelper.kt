@@ -82,4 +82,8 @@ constructor(private val toast: Toast) {
     private fun cancelToast(long: Long = SHORT_DELAY) {
         Handler().postDelayed({ toast.cancel() }, long)
     }
+
+    fun closeToast(){
+       toast.cancel()
+    }
 }

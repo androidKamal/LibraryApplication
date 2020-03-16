@@ -1,3 +1,4 @@
 include ':app', ':library'
 rootProject.name='Lib Application'
 include ':gpstracker'
+include ':imageproceesing'
