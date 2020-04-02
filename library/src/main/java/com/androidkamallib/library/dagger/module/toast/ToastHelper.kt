@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Handler
 import android.view.Gravity
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import javax.inject.Inject
@@ -53,6 +54,7 @@ constructor(private val toast: Toast) {
         val toastView: View = toast.view
         toastView.setBackgroundColor(Color.RED)
         val text: TextView = toastView.findViewById(R.id.message)
+        setToastHeight(text)
         text.setTextColor(Color.WHITE)
         if(atBottom) {
             toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 8)
@@ -67,7 +69,9 @@ constructor(private val toast: Toast) {
     fun showSuccessToast(message: String, atBottom:Boolean=true, delay:Long = LONG_DELAY){
         val toastView: View = toast.view
         toastView.setBackgroundResource(R.color.holo_green_dark)
+
         val text: TextView = toastView.findViewById(R.id.message)
+        setToastHeight(text)
         if(atBottom) {
             toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 8)
         }else{
@@ -85,5 +89,11 @@ constructor(private val toast: Toast) {
 
     fun closeToast(){
        toast.cancel()
+    }
+
+    private fun setToastHeight(textView : TextView){
+        val params: LinearLayout.LayoutParams = textView.layoutParams as LinearLayout.LayoutParams
+        params.height = 70
+        textView.layoutParams = params
     }
 }

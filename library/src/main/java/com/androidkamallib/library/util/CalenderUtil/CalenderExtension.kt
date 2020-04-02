@@ -15,6 +15,8 @@ class CalenderPattern(){
         var dd_MM_yyyy_HH__mm__ss = "dd/MM/yyyy HH:mm:ss"
         var dd_MM_yyyy = "dd/MM/yyyy"
         var hh_mm_a = "hh:mm a"
+        var dd_MMM_yyyy = "dd-MMM-yyyy"
+        var DD_MMM_YYYY = "DD-MMM-YYYY"
         var EEE_MMM_dd_yyyy = "EEE, MMM dd, yyyy"
         var dd_MM_yyyy_hh_mm_a = "dd:MM:yyyy hh:mm a"
         var DD_MMM_YYYY_hh_mm_a = "DD-MMM-YYYY hh:mm a"
