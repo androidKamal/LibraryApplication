@@ -95,5 +95,6 @@ constructor(private val toast: Toast) {
         val params: LinearLayout.LayoutParams = textView.layoutParams as LinearLayout.LayoutParams
         params.height = 70
         textView.layoutParams = params
+        textView.textSize = 25f;
     }
 }
