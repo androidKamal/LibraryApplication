@@ -5,13 +5,14 @@ import java.util.*
 
 class UniqueNumber {
     companion object{
-        fun getRandomString(lenght:Int=40, initial:String=""):String{
+
+         fun getRandomString(length: Int = 20, initial: String = ""): String {
             val alphaNumericString = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     + "0123456789"
                     + "abcdefghijklmnopqrstuvxyz")
-            val sb = StringBuilder(lenght-25)
+            val sb = StringBuilder(length)
 
-            for (i in 0 until lenght-25) { // generate a random number between
+            for (i in 0 until length) { // generate a random number between
 // 0 to AlphaNumericString variable length
                 val index = (alphaNumericString.length
                         * Math.random()).toInt()
@@ -21,7 +22,7 @@ class UniqueNumber {
                 )
             }
 
-            return (initial+sb+UUID.randomUUID().toString()+Calendar.getInstance().timeInMillis).replace("-","")
+            return (initial + sb + Calendar.getInstance().timeInMillis).replace("-", "")
         }
     }
 }
