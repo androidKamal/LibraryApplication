@@ -47,9 +47,8 @@ class HomeViewModel : BaseViewModel {
     @javax.inject.Inject
     lateinit var weatherDatabase: WeatherDatabase
 
-    @javax.inject.Inject
+    @set:Inject
     lateinit var toastHelper: ToastHelper
-
 
     var todaysWeatherRepository: HomeTodaysWeatherRepository
 
@@ -105,17 +104,17 @@ class HomeViewModel : BaseViewModel {
     fun getDate(timeMillisInt: Int): MutableLiveData<String> {
         var cal = Calendar.getInstance()
         var toDaysDate: MutableLiveData<String>? = MutableLiveData()
-        toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
-            pattern = CalenderPattern.dd_MM_yyyy)
-        return toDaysDate
+        /*toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
+            pattern = CalenderPattern.dd_MM_yyyy)*/
+        return toDaysDate!!
     }
 
     fun getTime(timeMillisInt: Int): MutableLiveData<String> {
         var cal = Calendar.getInstance()
         var toDaysDate: MutableLiveData<String>? = MutableLiveData()
-        toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
-            pattern = CalenderPattern.hh_mm_a)
-        return toDaysDate
+       /* toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
+            pattern = CalenderPattern.hh_mm_a)*/
+        return toDaysDate!!
     }
 
 

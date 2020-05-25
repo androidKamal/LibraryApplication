@@ -74,11 +74,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <include
-            android:id="@+id/progress_bar_layout"
-            layout="@layout/progress_bar_layout"
-            android:visibility="@{viewModel.loadingVisibility==true? View.VISIBLE :View.GONE}" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

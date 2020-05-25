@@ -551,11 +551,5 @@
                     app:layout_constraintGuide_percent="0.96" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
-        <include
-            android:id="@+id/progress_bar_layout"
-            layout="@layout/progress_bar_layout"
-            android:visibility="@{viewModel.loadingVisibility==true? View.VISIBLE :View.GONE, default=gone}" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

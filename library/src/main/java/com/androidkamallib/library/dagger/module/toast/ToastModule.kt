@@ -1,7 +1,9 @@
 package com.androidkamallib.library.dagger.module.toast
 
+import android.R
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.Toast
 import com.androidkamallib.library.dagger.annotaions.ApplicationContext
 import dagger.Module
