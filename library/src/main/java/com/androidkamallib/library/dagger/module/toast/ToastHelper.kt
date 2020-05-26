@@ -1,13 +1,15 @@
 package com.androidkamallib.library.dagger.module.toast
 
-import android.R
+import android.content.Context
 import android.graphics.Color
 import android.os.Handler
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.androidkamallib.library.R
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,7 +17,7 @@ import javax.inject.Singleton
 @Singleton
 open class ToastHelper
 @Inject
-constructor(private val toast: Toast) {
+constructor(private val toast: Toast, val context: Context) {
 
     private val LONG_DELAY = 5000L // 5 seconds
 
@@ -91,9 +93,15 @@ constructor(private val toast: Toast) {
         textView.setTextColor(Color.WHITE)
         textView.isSingleLine = false
         val params: LinearLayout.LayoutParams = textView.layoutParams as LinearLayout.LayoutParams
-        params.setMargins(20,30,20,30)
-        textView.setLineSpacing(3.0f, 1.0f);
+        val leftRight = 5f
+        val topBottom = 10f
+        val newLeftRight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+            leftRight, context.resources.displayMetrics).toInt()
+        val newTopBottom = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+            topBottom, context.resources.displayMetrics).toInt()
+        params.setMargins(newLeftRight,newTopBottom,newLeftRight,newTopBottom)
+        textView.setLineSpacing(1.0f, 1.0f);
         textView.layoutParams = params
-        textView.textSize = 15f;
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
     }
 }

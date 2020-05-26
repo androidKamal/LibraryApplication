@@ -20,4 +20,10 @@ open class ToastModule(
     fun provideToast(): Toast {
         return Toast.makeText(context, "message", Toast.LENGTH_SHORT)
     }
+
+    @Provides
+    @Singleton
+    fun provideContext(): Context {
+        return context
+    }
 }
