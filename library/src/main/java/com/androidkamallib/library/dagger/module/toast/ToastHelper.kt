@@ -31,7 +31,6 @@ constructor(private val toast: Toast, val context: Context) {
         toast.setText(message)
         toast.show()
         cancelToast()
-
     }
 
     fun showTooShortToast(message: String) {
@@ -55,7 +54,6 @@ constructor(private val toast: Toast, val context: Context) {
     fun showErrorToast(message: String, atBottom:Boolean = true, delay:Long = LONG_DELAY){
         val toastView: View = toast.view
         toastView.setBackgroundColor(Color.RED)
-        setToastHeight(toastView.findViewById(R.id.message))
         if(atBottom) {
             toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 140)
         }else{
@@ -69,7 +67,6 @@ constructor(private val toast: Toast, val context: Context) {
     fun showSuccessToast(message: String, atBottom:Boolean = true, delay:Long = LONG_DELAY){
         val toastView: View = toast.view
         toastView.setBackgroundColor(Color.parseColor("#1B5E20"))
-        setToastHeight(toastView.findViewById(R.id.message))
         if(atBottom) {
             toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 140)
         }else{
@@ -87,21 +84,5 @@ constructor(private val toast: Toast, val context: Context) {
 
     fun closeToast(){
        toast.cancel()
-    }
-
-    private fun setToastHeight(textView : TextView){
-        textView.setTextColor(Color.WHITE)
-        textView.isSingleLine = false
-        val params: LinearLayout.LayoutParams = textView.layoutParams as LinearLayout.LayoutParams
-        val leftRight = 5f
-        val topBottom = 10f
-        val newLeftRight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-            leftRight, context.resources.displayMetrics).toInt()
-        val newTopBottom = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-            topBottom, context.resources.displayMetrics).toInt()
-        params.setMargins(newLeftRight,newTopBottom,newLeftRight,newTopBottom)
-        textView.setLineSpacing(1.0f, 1.0f);
-        textView.layoutParams = params
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
     }
 }
