@@ -1,5 +1,6 @@
 package com.androidkamallib.library.util.common
 
+import com.androidkamallib.library.util.CalenderUtil.getCalendar
 import java.lang.StringBuilder
 import java.util.*
 
@@ -22,7 +23,7 @@ class UniqueNumber {
                 )
             }
 
-            return (initial + sb + Calendar.getInstance().timeInMillis).replace("-", "")
+            return (initial + sb + getCalendar().timeInMillis).replace("-", "")
         }
     }
 }

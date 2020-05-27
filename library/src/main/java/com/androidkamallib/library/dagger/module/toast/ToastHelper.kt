@@ -17,7 +17,7 @@ import javax.inject.Singleton
 @Singleton
 open class ToastHelper
 @Inject
-constructor(private val toast: Toast, val context: Context) {
+constructor(private val toast: Toast) {
 
     private val LONG_DELAY = 5000L // 5 seconds
 

@@ -23,8 +23,12 @@ class CalenderPattern(){
     }
 }
 
+fun getCalendar(locale: Locale = Locale.ENGLISH): Calendar{
+    return Calendar.getInstance(locale)
+}
+
 private val calendar: Calendar by lazy {
-    Calendar.getInstance()
+    getCalendar()
 }
 
 fun Date.isSunday(): Boolean {

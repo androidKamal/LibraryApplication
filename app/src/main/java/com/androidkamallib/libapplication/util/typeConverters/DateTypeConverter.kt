@@ -2,6 +2,7 @@ package com.androidkamallib.libapplication.util.typeConverters
 
 import androidx.room.TypeConverter
 import com.androidkamallib.library.model.LibDate
+import com.androidkamallib.library.util.CalenderUtil.getCalendar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
@@ -12,7 +13,7 @@ class DateTypeConverter {
     @TypeConverter
     fun stringToDt(json: String?): LibDate? {
         val gson = Gson()
-        val calendar = Calendar.getInstance()
+        val calendar = getCalendar()
         calendar.timeInMillis = (json + "000").toLong()
         var libDate = LibDate()
         libDate.localeTimeStamp = calendar.timeInMillis

@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.androidkamallib.library.util.CalenderUtil.CalenderPattern
 import com.androidkamallib.library.util.CalenderUtil.formatTimeStampToPattern
+import com.androidkamallib.library.util.CalenderUtil.getCalendar
 import com.androidkamallib.library.util.location.FusedLocationTracker
 import com.google.android.gms.location.LocationListener
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,9 +26,9 @@ class MainActivity : AppCompatActivity(), LocationListener {
         tvLocation.text ="Accuracy : "+ location.accuracy+",\n" +
                 "Bearing: "+location.bearing+",\n" +
                 "Altitude: "+location.altitude+", \n" +
-                "Date :"+ Calendar.getInstance().formatTimeStampToPattern(location.time,
+                "Date :"+ getCalendar().formatTimeStampToPattern(location.time,
                                                 pattern = CalenderPattern.EEE_MMM_dd_yyyy)+", \n" +
-                "Time :"+ Calendar.getInstance().formatTimeStampToPattern(location.time,
+                "Time :"+ getCalendar().formatTimeStampToPattern(location.time,
                                                 pattern = CalenderPattern.hh_mm_a)+ ",\n" +
                 "Latitude: "+ location.latitude+", \n" +
                 "Longitude: "+location.longitude + ",\n" +

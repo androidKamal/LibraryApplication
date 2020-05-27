@@ -41,10 +41,4 @@ open class ToastModule(
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
         return toast
     }
-
-    @Provides
-    @Singleton
-    fun provideContext(): Context {
-        return context
-    }
 }

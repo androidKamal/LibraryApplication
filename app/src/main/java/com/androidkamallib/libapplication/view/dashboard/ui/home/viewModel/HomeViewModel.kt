@@ -21,6 +21,7 @@ import com.androidkamallib.library.dagger.module.data.preference.SharedPrefsHelp
 import com.androidkamallib.library.dagger.module.toast.ToastHelper
 import com.androidkamallib.library.util.CalenderUtil.CalenderPattern
 import com.androidkamallib.library.util.CalenderUtil.formatTimeStampToPattern
+import com.androidkamallib.library.util.CalenderUtil.getCalendar
 
 import com.androidkamallib.library.util.glide.GlideUtil
 import retrofit2.Call
@@ -34,8 +35,8 @@ class HomeViewModel : BaseViewModel {
 
 
     //var currentTime =Date().formatToViewTimeDefaults()
-    var toDaysDate: MutableLiveData<String>? = MutableLiveData()
-    var toDaysTime: MutableLiveData<String>? = MutableLiveData()
+    private var toDaysDate: MutableLiveData<String>? = MutableLiveData()
+    private var toDaysTime: MutableLiveData<String>? = MutableLiveData()
     var todaysWather: MutableLiveData<TodaysWeather>? = MutableLiveData()
 
     @javax.inject.Inject
@@ -81,7 +82,7 @@ class HomeViewModel : BaseViewModel {
     }
 
     private fun setTodaysWeather() {
-        var cal = Calendar.getInstance()
+        var cal = getCalendar()
         toDaysTime!!.value =
             cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
                 pattern = CalenderPattern.dd_MM_yyyy)
@@ -102,16 +103,16 @@ class HomeViewModel : BaseViewModel {
     }
 
     fun getDate(timeMillisInt: Int): MutableLiveData<String> {
-        var cal = Calendar.getInstance()
-        var toDaysDate: MutableLiveData<String>? = MutableLiveData()
+        var cal = getCalendar()
+        val toDaysDate: MutableLiveData<String>? = MutableLiveData()
         /*toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
             pattern = CalenderPattern.dd_MM_yyyy)*/
         return toDaysDate!!
     }
 
     fun getTime(timeMillisInt: Int): MutableLiveData<String> {
-        var cal = Calendar.getInstance()
-        var toDaysDate: MutableLiveData<String>? = MutableLiveData()
+        var cal = getCalendar()
+        val toDaysDate: MutableLiveData<String>? = MutableLiveData()
        /* toDaysDate!!.value = cal.formatTimeStampToPattern(((todaysWather!!.value!!.dt).toString() + "000").toLong(),
             pattern = CalenderPattern.hh_mm_a)*/
         return toDaysDate!!
