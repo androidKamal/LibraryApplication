@@ -14,8 +14,9 @@ add following dependacny in app gradle
  
  # What is in this
  
- - Dagger 2, Sharedpreference, Retrofit client, RoomDB all in Dagger 2
- - Kotlin function extension
+ - Dagger 2, Sharedpreference, Retrofit client, RoomDB all, Toast in Dagger 2
+ - Kotlin function extension in Calendar
+ - Gloval Calendar Insatnce with default English Locale
  - MVVM sample in App
  
  
